@@ -1,0 +1,17 @@
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-image: url('../img/shopbackground02.gif');
+  background-repeat: no-repeat;
+  background-position-x: 100%;
+  background-position-y: 100%;
+}
+
+.shopButtons {
+  width: 16vw;
+  height: 10vh;
+  border-radius: 20px;
+  margin-bottom: 10px;
+  cursor: pointer;
+}

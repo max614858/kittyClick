@@ -17,17 +17,18 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   if (localStorage.getItem('clicks')) {
-    kittyClicks = Number(localStorage.getItem('clicks'))
-  } else kittyClicks = localStorage.setItem('clicks', 0)
+    kittyClicks = localStorage.getItem('clicks')
+  } else kittyClicks = localStorage.setItem('clicks', 0);
 
+  kittyClicks = Number(localStorage.getItem('clicks'))
 
   function addClick() {
-    localStorage.getItem('clicks')
     kittyClicks += clickValue * mutliplier
+    kittyClicks = Number(kittyClicks)
     soupAmount.innerHTML = `KittyClicks: ${kittyClicks}`;
     localStorage.setItem('clicks', kittyClicks);
+    console.log(typeof(kittyClicks))
   }
-
 
   console.log('loaded')
   if (soupAmount) {
@@ -47,9 +48,10 @@ document.addEventListener('DOMContentLoaded', function() {
             let price = button.innerHTML.slice(button.innerHTML.indexOf('$') + 1, button.innerHTML.lastIndexOf('k'));
             let pay = Number(price)
             if (pay > kittyClicks) {
-
+              console.log(typeof(kittyClicks))
             }
             else {
+              console.log(typeof(kittyClicks))
               (kittyClicks -= pay)
               displayKittos.innerHTML = `KittyClicks: ${kittyClicks}`;
               localStorage.setItem('clicks', kittyClicks);
@@ -77,3 +79,4 @@ document.addEventListener('DOMContentLoaded', function() {
         getPrice()
   }
 })
+

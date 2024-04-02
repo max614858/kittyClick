@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', function() {
   let displayKittos = document.getElementById('displayKittos')
   let shopLink = document.getElementById('shopLink');
 
-  if (clickValue) {
+  if (localStorage.getItem('clickValue')) {
     clickValue = Number(localStorage.getItem('clickValue'))
   } else {
     localStorage.setItem('clickValue', 1)
@@ -34,10 +34,18 @@ document.addEventListener('DOMContentLoaded', function() {
   if (soupAmount) {
     soupAmount.innerHTML = `KittyClicks: ${kittyClicks}`;
   }
+
+  if (localStorage.getItem('vA')) {
+    vA = localStorage.getItem('vA')
+  } else vA = localStorage.setItem('vA', 100)
+
+
   if (displayKittos) {
     let vA = localStorage.getItem('vA');
     displayKittos.innerHTML = `KittyClicks: ${kittyClicks}`;
     let buttonList = document.querySelectorAll(".shopButtons")
+    vA = Number(vA)
+    console.log(typeof(vA))
     buttonList[0].innerHTML = "<h4>jimpy clicker<br> $" + `${vA}` + "kitto</h4>"
     function getPrice() {
       let buttonOrder = []
@@ -52,7 +60,8 @@ document.addEventListener('DOMContentLoaded', function() {
             }
             else {
               console.log(typeof(kittyClicks))
-              (kittyClicks -= pay)
+              console.log(pay)
+              kittyClicks -= pay
               displayKittos.innerHTML = `KittyClicks: ${kittyClicks}`;
               localStorage.setItem('clicks', kittyClicks);
               if (buttonOrder[0]) {
@@ -79,4 +88,3 @@ document.addEventListener('DOMContentLoaded', function() {
         getPrice()
   }
 })
-
